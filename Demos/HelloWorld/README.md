@@ -7,8 +7,6 @@ This demo is about:
  - modules (`import` and `export`)
  - default parameter value
  
-# Demo
-
 ## Modules (`App.js`)
 
 ```js
