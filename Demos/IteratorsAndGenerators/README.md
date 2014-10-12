@@ -6,6 +6,7 @@ This demo is about:
  - Generators
  
 # Demo
+```js
 // ====================================================================================================================
 // Iterator protocol
 // An iterator has a method called next. This method returns an object with two properties:
