@@ -8,9 +8,6 @@ chai.expect(king).to.be.eql('Arthur');
 //king = 'something else';
 
 
-
-
-
 // ===============
 // arrow functions
 // ===============
@@ -48,24 +45,18 @@ var fooScope = new Foo();
 chai.expect(fooScope.testMethod()).to.be.eql('foo');
 
 
-
-
-
 //========================
 // computed property names
 //========================
 var x = 'a';
 var obj = {
 	[x]: 'foo',
-	[(1+2)]: 'bar',
+	[(1 + 2)]: 'bar',
 	[square(5)]: 'foo bar'
 };
 chai.expect(obj['a']).to.be.eql('foo');
 chai.expect(obj[3]).to.be.eql('bar');
 chai.expect(obj[25]).to.be.eql('foo bar');
-
-
-
 
 
 // ===============
@@ -115,4 +106,57 @@ chai.expect(fVarScope).to.be.eql('undefined');
 //console.log(foo); // expected is undefined, but 'bar' is returned
 
 
+// ==================
+// default parameters
+// ==================
 
+function multiplyBy(param1, param2 = 2) {
+	return param1 * param2;
+}
+chai.expect(multiplyBy(5)).to.be.eql(10);
+chai.expect(multiplyBy(5, 3)).to.be.eql(15);
+chai.expect(multiplyBy(5, undefined)).to.be.eql(10);
+
+
+// ===============
+// rest parameters
+// ===============
+
+function addNumbers(...numbers) {
+	var result = 0;
+	numbers.forEach((num)=> {
+		result += num;
+	});
+	return result;
+}
+chai.expect(addNumbers(1, 2, 3)).to.be.eql(6);
+
+function multiplyNumsBy(multiplier, ...numbers) {
+	var result = new Array();
+	numbers.forEach((num)=> {
+		result.push(num*multiplier);
+	});
+	return result;
+}
+multiplyNumsBy(2, 1, 2, 3);
+// [2, 4, 6]
+
+
+// ========================
+// destructuring assignment
+// ========================
+var [a, b, c] = ['one', 'two', 'three'];
+chai.expect(a).to.be.eql('one');
+chai.expect(b).to.be.eql('two');
+chai.expect(c).to.be.eql('three');
+
+var [d, [e], [f]] = ['4', ['five.zero', 'five.one'], 'six'];
+chai.expect(d).to.be.eql('4');
+chai.expect(e).to.be.eql('five.zero');
+chai.expect(f).to.be.eql('s');
+
+var foo = ["one", "two", "three"];
+var [one, two, three] = foo;
+chai.expect(one).to.be.eql('one');
+chai.expect(two).to.be.eql('two');
+chai.expect(three).to.be.eql('three');
