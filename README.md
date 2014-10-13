@@ -12,6 +12,7 @@ no need to compile or anything...just open it in your browser and everything sho
 - [Arrays](Demos/Arrays)
 - [AssignmentsAndParameters](Demos/AssignmentsAndParameters)
 - [IteratorsAndGenerators](Demos/IteratorsAndGenerators)
+- [Promises](Demos/Promises)
 
 ## Webiny Platform
 
