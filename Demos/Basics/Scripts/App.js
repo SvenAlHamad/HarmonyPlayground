@@ -104,3 +104,11 @@ chai.expect(fVarScope).to.be.eql('undefined');
 	let foo = 'bar';
 }
 //console.log(foo); // expected is undefined, but 'bar' is returned
+
+
+// =================
+// template literals
+// =================
+var name = 'world';
+var greeting = `hello ${name}`;
+chai.expect(greeting).to.be.eql('hello world');
