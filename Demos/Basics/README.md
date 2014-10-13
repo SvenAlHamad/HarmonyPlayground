@@ -6,6 +6,7 @@ This demo is about:
  - arrow functions
  - computed property names
  - block scoping
+ - template literals
  
 # Demo
 ```js
@@ -17,9 +18,6 @@ chai.expect(king).to.be.eql('Arthur');
 
 // this should trigger an error if you uncomment it
 //king = 'something else';
-
-
-
 
 
 // ===============
@@ -59,24 +57,18 @@ var fooScope = new Foo();
 chai.expect(fooScope.testMethod()).to.be.eql('foo');
 
 
-
-
-
 //========================
 // computed property names
 //========================
 var x = 'a';
 var obj = {
 	[x]: 'foo',
-	[(1+2)]: 'bar',
+	[(1 + 2)]: 'bar',
 	[square(5)]: 'foo bar'
 };
 chai.expect(obj['a']).to.be.eql('foo');
 chai.expect(obj[3]).to.be.eql('bar');
 chai.expect(obj[25]).to.be.eql('foo bar');
-
-
-
 
 
 // ===============
@@ -124,4 +116,12 @@ chai.expect(fVarScope).to.be.eql('undefined');
 	let foo = 'bar';
 }
 //console.log(foo); // expected is undefined, but 'bar' is returned
+
+
+// =================
+// template literals
+// =================
+var name = 'world';
+var greeting = `hello ${name}`;
+chai.expect(greeting).to.be.eql('hello world');
 ```
