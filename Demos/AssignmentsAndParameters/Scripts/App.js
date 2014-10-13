@@ -40,6 +40,20 @@ multiplyNumsBy(2, 1, 2, 3);
 
 
 // ====================================================================================================================
+// Spread parameters
+// The spread operator allows an expression to be expanded in places where multiple
+// arguments (for function calls) or multiple elements (for array literals) are expected.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
+// ====================================================================================================================
+function funcWithALotOfParams(param1, param2, param3, param4) {
+	return param1 + ' ' + param2 + ' ' + param3 + ' ' + param4;
+}
+var params = ['a', 'b', 'c', 'd'];
+var result = funcWithALotOfParams(...params);
+chai.expect(result).to.be.eql('a b c d');
+
+
+// ====================================================================================================================
 // Destructuring assignment
 // The destructuring assignment syntax is a JavaScript expression that makes it possible to extract data
 // from arrays or objects using a syntax that mirrors the construction of array and object literals.
@@ -93,7 +107,7 @@ var {sex} = obj;
 chai.expect(sex).to.be.eql('Male'); // on objects parameters are extracted by name, not order
 
 // assign the variables with different names than the defined keys
-var {name: foo, sex:bar} = obj; // you can't put the brackets around the key name
+var {name: foo, sex: bar} = obj; // you can't put the brackets around the key name
 chai.expect(foo).to.be.eql('Jim');
 chai.expect(bar).to.be.eql('Male');
 
@@ -116,7 +130,7 @@ var data = {
 	'link': 'http://google.com'
 };
 
-var {title:myTitle, innerData: [{author}, {author:secondAuthor}], link} = data;
+var {title: myTitle, innerData: [{author}, {author: secondAuthor}], link} = data;
 chai.expect(myTitle).to.be.eql('Article demo');
 chai.expect(author).to.be.eql('Jim');
 chai.expect(secondAuthor).to.be.eql('Jill');
@@ -124,19 +138,19 @@ chai.expect(link).to.be.eql('http://google.com');
 
 // iterations
 var authors = [
-	{name:'Jill', sex:'Female'},
-	{name:'Jack', sex:'Male'}
+	{name: 'Jill', sex: 'Female'},
+	{name: 'Jack', sex: 'Male'}
 ];
 
-for(var {name, sex} of authors){
+for (var {name, sex} of authors) {
 	//console.log(name+' '+sex);
 }
 // Jill Female
 // Jack Male
 
 // pulling fields from objects as function parameters
-function createAuthorTitle({title:displayTitle, innerData:[{author}]}){
-	return displayTitle+' '+author;
+function createAuthorTitle({title: displayTitle, innerData: [{author}]}) {
+	return displayTitle + ' ' + author;
 }
 var fooTitle = createAuthorTitle(data);
 chai.expect(fooTitle).to.be.eql('Article demo Jim');

@@ -4,6 +4,7 @@ Assignments & Parameters Demo
 This demo is about:
  - default parameters
  - rest parameters
+ - spread parameters
  - destructuring assignment on arrays and objects
  
 # Demo
